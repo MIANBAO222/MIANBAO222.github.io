@@ -243,6 +243,197 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/16/target/" itemprop="url">
+                  new target
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-16T02:29:31+08:00" content="2016-07-16">
+              2016-07-16
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>##新目标<br>当搭建完pmfs并且成功试用之后，尝试添加去冗余的功能，由于对pmfs是在内核的fs，修改难度比较大<br>选择先尝试在pmfs上面搭建libfuse来实现去冗余的功能并且改善<br>实现步骤<br>1.在etx4上面尝试搭建<br>2.阅读文献理解libfuse，看看能否在pmfs上面搭建<br>3.尝试在pmfs挂载的磁盘上面搭建libfuse</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/16/pmfs/" itemprop="url">
+                  pmfs
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-16T02:21:31+08:00" content="2016-07-16">
+              2016-07-16
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>##简单粗暴的日志<br>1.Git clone pmfs<br>2.复制到usr/src<br>3.切换为root权限<br>4.make menuconfig 找到pmfs并打开<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ make &amp;&amp;make modules_install install</span><br></pre></td></tr></table></figure></p>
+<p>5.更新grub<br>6.切换内核<br>7.执行mount<br>8.报错–文件系统类型错误什么的<br>9.提示可以使用dmesg|syslog查看错误<br>10.发现提示要安装 nss-myhostname<br>11.此时更新了很多软件（apt-get）<br>12.然后安装<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libnss-myhostname</span><br></pre></td></tr></table></figure></p>
+<p>14.出现报错ioremap of the pmfs image failed（1）<br>一直是这个提示= =怎么破忘记了= =<br>15.{make menuconfig中的设置}<br>pmfs[y]<br>pmfs—test[n]<br>pmfs——test——module[n]<br>pmfs——write——protect[y]<br>pmfs-xip[y]<br>16.解决问题：<br>在grub中预留内存<br>在linux那行里面加入memmap=2G$4G 留下2g运存其余备用不准用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#mount -t pmfs -o physaddr=0x100000000,init=2G none /mnt/pmfs</span></span><br></pre></td></tr></table></figure></p>
+<p>挂载</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/07/hello-world/" itemprop="url">
                   Hi
                 </a>
@@ -287,11 +478,14 @@
       
         
           
-            <p>以下保存一些有用或者有意思的教程或者文档</p>
-<h2 id="pmfs"><a href="#pmfs" class="headerlink" title="pmfs"></a>pmfs</h2><p>pmfs github首页<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/linux-pmfs/pmfs</span><br></pre></td></tr></table></figure></p>
+            <h2 id="pmfs"><a href="#pmfs" class="headerlink" title="pmfs"></a>pmfs</h2><p>pmfs github首页<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/linux-pmfs/pmfs</span><br></pre></td></tr></table></figure></p>
 <p>pmfs文档汇总<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://research.cs.wisc.edu/sonar/tutorial/</span><br></pre></td></tr></table></figure></p>
 <p>pmfs论文<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://dl.acm.org/citation.cfm?id=2592814</span><br></pre></td></tr></table></figure></p>
-<h2 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h2><p>在找教程的时候找到了非常多旧的教程，这篇是我找到比较新的教程的也写得比较好的一篇<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://opiece.me/2015/04/09/hexo-guide/</span><br></pre></td></tr></table></figure></p>
+<h2 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h2><p>在找教程的时候找到了非常多旧的教程，这篇是我找到比较新的教程的也写得比较好的一篇<br>搭建<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://opiece.me/2015/04/09/hexo-guide/</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://opiece.me/2015/04/09/hexo-guide/</span><br></pre></td></tr></table></figure>
+<p>##好用的搜索引擎<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://so.chongbuluo.com/</span><br></pre></td></tr></table></figure></p>
+<p> ##去冗余的文件系统–libfuse<br> 目的是尝试实现在pmfs上搭建该系统实现去冗余的功能<br> github<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/libfuse/libfuse</span><br><span class="line"></span><br><span class="line">两篇论文</span><br><span class="line">```bash</span><br><span class="line">http://dl.acm.org/citation.cfm?id=2592814</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.usenix.org/legacy/events/fast11/tech/full_papers/Chen.pdf</span><br></pre></td></tr></table></figure>
 <hr>
 
           
@@ -343,7 +537,7 @@
               
                 
                 <a class="post-title-link" href="/2016/05/07/my-new-post/" itemprop="url">
-                  预告：linux下qemu虚拟机的搭建和管理入门
+                  linux下qemu虚拟机的搭建和管理
                 </a>
               
             
@@ -386,7 +580,9 @@
       
         
           
-            
+            <p>##简单来说= =见百度</p>
+<p>#end</p>
+
           
         
       
@@ -455,7 +651,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -465,7 +661,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
