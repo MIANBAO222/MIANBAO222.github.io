@@ -287,7 +287,7 @@
       
         
           
-            <h2 id="新目标"><a href="#新目标" class="headerlink" title="新目标"></a>新目标</h2><p>当搭建完pmfs并且成功试用之后，尝试添加去冗余的功能，由于对pmfs是在内核的fs，修改难度比较大<br>选择先尝试在pmfs上面搭建libfuse来实现去冗余的功能并且改善<br>实现步骤<br>1.在etx4上面尝试搭建<br>2.阅读文献理解libfuse，看看能否在pmfs上面搭建<br>3.尝试在pmfs挂载的磁盘上面搭建libfuse</p>
+            <h2 id="新目标"><a href="#新目标" class="headerlink" title="新目标"></a>新目标</h2><p>当搭建完pmfs并且成功试用之后，尝试添加去冗余的功能，由于对pmfs是在内核的fs，修改难度比较大<br>选择先尝试在pmfs上面搭建libfuse来实现去冗余的功能并且改善<br>实现步骤<br>1.在etx4上面尝试搭建（已完成）<br>2.阅读文献理解libfuse，看看能否在pmfs上面搭建<br>3.尝试在pmfs挂载的磁盘上面搭建libfuse<br>4.利用FUSE完成去冗余功能</p>
 
           
         
@@ -381,10 +381,16 @@
       
         
           
-            <h2 id="简单粗暴的日志"><a href="#简单粗暴的日志" class="headerlink" title="简单粗暴的日志"></a>简单粗暴的日志</h2><p>1.Git clone pmfs<br>2.复制到usr/src<br>3.切换为root权限<br>4.make menuconfig 找到pmfs并打开<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ make &amp;&amp;make modules_install install</span><br></pre></td></tr></table></figure></p>
-<p>5.更新grub<br>6.切换内核<br>7.执行mount<br>8.报错–文件系统类型错误什么的<br>9.提示可以使用dmesg|syslog查看错误<br>10.发现提示要安装 nss-myhostname<br>11.此时更新了很多软件（apt-get）<br>12.然后安装<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libnss-myhostname</span><br></pre></td></tr></table></figure></p>
-<p>14.出现报错ioremap of the pmfs image failed（1）<br>一直是这个提示= =怎么破忘记了= =<br>15.{make menuconfig中的设置}<br>pmfs[y]<br>pmfs—test[n]<br>pmfs——test——module[n]<br>pmfs——write——protect[y]<br>pmfs-xip[y]<br>16.解决问题：<br>在grub中预留内存<br>在linux那行里面加入memmap=2G$4G 留下2g运存其余备用不准用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#mount -t pmfs -o physaddr=0x100000000,init=2G none /mnt/pmfs</span></span><br></pre></td></tr></table></figure></p>
+            <p><strong>注意</strong><br>不能使用LVM<br>pmfs github首页<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/linux-pmfs/pmfs</span><br></pre></td></tr></table></figure></p>
+<h2 id="简单粗暴的日志"><a href="#简单粗暴的日志" class="headerlink" title="简单粗暴的日志"></a>简单粗暴的日志</h2><p>1.Git clone pmfs<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/linux-pmfs/pmfs</span><br></pre></td></tr></table></figure></p>
+<p>2.复制到usr/src<br>3.切换为root权限<br>4.make menuconfig 找到pmfs并打开需要依赖<br>Ubuntu<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install libncurses5-dev</span><br></pre></td></tr></table></figure></p>
+<p>centos<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install ncurses-libs yum install ncurses-devel</span><br></pre></td></tr></table></figure></p>
+<p>然后<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make menuconfig</span><br></pre></td></tr></table></figure></p>
+<p>{make menuconfig中的设置}<br>pmfs[y]<br>pmfs—test[n]<br>pmfs——test——module[n]<br>pmfs——write——protect[y]<br>pmfs-xip[y]<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ make &amp;&amp;make modules_install install</span><br></pre></td></tr></table></figure></p>
+<p>5.更新grub(上一步已经自动更新了)<br>6.切换内核<br><del>8.报错–文件系统类型错误什么的</del><br><del>9.提示可以使用dmesg|syslog查看错误</del><br><del>10.发现提示要安装 nss-myhostname</del><br><del>nss-myhostname是为了支持dmesg的</del><br><del>11.此时更新了很多软件（apt-get）</del><br><del>12.然后安装</del><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libnss-myhostname</span><br></pre></td></tr></table></figure></p>
+<p><del>14.出现报错ioremap of the pmfs image failed（1）</del><br><del>16.解决问题：</del><br>在grub中预留内存<br>在linux那行里面加入memmap=2G$4G 留下2g运存其余备用不准用<br><strong>memmap=2G$4G一定要加不然会进call trace</strong><br>7.执行mount<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#mount -t pmfs -o physaddr=0x100000000,init=2G none /mnt/pmfs</span></span><br></pre></td></tr></table></figure></p>
 <p>挂载</p>
+<p>ps.仍有问题没搞清楚<br>1.7中要设置不同位置的内存挂载时暂时没搞清楚<br>2.ubuntu 14.04成功替换 centos7出现问题，但是有人却可以，继续寻找问题所在<br>3.千万不要开LVM<br>4.千万记得要留内存空间</p>
 
           
         
@@ -478,7 +484,8 @@
       
         
           
-            <h2 id="简单来说-见百度"><a href="#简单来说-见百度" class="headerlink" title="简单来说= =见百度"></a>简单来说= =见百度</h2><h1 id="end"><a href="#end" class="headerlink" title="end"></a>end</h1>
+            <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install qemu-kvm libvirt-bin virt-manager bridge-utils</span><br></pre></td></tr></table></figure>
+<h1 id="end"><a href="#end" class="headerlink" title="end"></a>end</h1>
           
         
       
@@ -528,7 +535,7 @@
               
                 
                 <a class="post-title-link" href="/2016/05/07/hello-world/" itemprop="url">
-                  Hi
+                  Start
                 </a>
               
             
@@ -577,7 +584,8 @@
 <h2 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h2><p>在找教程的时候找到了非常多旧的教程，这篇是我找到比较新的教程的也写得比较好的一篇<br>搭建<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://opiece.me/2015/04/09/hexo-guide/</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://opiece.me/2015/04/09/hexo-guide/</span><br></pre></td></tr></table></figure>
 <h2 id="好用的搜索引擎"><a href="#好用的搜索引擎" class="headerlink" title="好用的搜索引擎"></a>好用的搜索引擎</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://so.chongbuluo.com/</span><br></pre></td></tr></table></figure>
-<h2 id="去冗余的文件系统–libfuse"><a href="#去冗余的文件系统–libfuse" class="headerlink" title="去冗余的文件系统–libfuse"></a>去冗余的文件系统–libfuse</h2><p> 目的是尝试实现在pmfs上搭建该系统实现去冗余的功能<br> github<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/libfuse/libfuse</span><br><span class="line"></span><br><span class="line">两篇论文</span><br><span class="line">```bash</span><br><span class="line">http://dl.acm.org/citation.cfm?id=2592814</span><br></pre></td></tr></table></figure></p>
+<h2 id="用户空间文件系统–libfuse（FUSE）"><a href="#用户空间文件系统–libfuse（FUSE）" class="headerlink" title="用户空间文件系统–libfuse（FUSE）"></a>用户空间文件系统–libfuse（FUSE）</h2><p> 目的是尝试实现在pmfs上搭建该系统并实现去冗余的功能<br> github<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/libfuse/libfuse</span><br></pre></td></tr></table></figure></p>
+<p>两篇pmfs的论文<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://dl.acm.org/citation.cfm?id=2592814</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.usenix.org/legacy/events/fast11/tech/full_papers/Chen.pdf</span><br></pre></td></tr></table></figure>
 <hr>
 

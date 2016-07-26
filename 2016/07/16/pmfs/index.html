@@ -84,19 +84,22 @@
 
 
 
-<meta name="description" content="简单粗暴的日志1.Git clone pmfs2.复制到usr/src3.切换为root权限4.make menuconfig 找到pmfs并打开1$ make &amp;amp;&amp;amp;make modules_install install
-5.更新grub6.切换内核7.执行mount8.报错–文件系统类型错误什么的9.提示可以使用dmesg|syslog查看错误10.发现提示要安装 nss-my">
+<meta name="description" content="注意不能使用LVMpmfs github首页1https://github.com/linux-pmfs/pmfs
+简单粗暴的日志1.Git clone pmfs1git clone https://github.com/linux-pmfs/pmfs
+2.复制到usr/src3.切换为root权限4.make menuconfig 找到pmfs并打开需要依赖Ubuntu1apt-get inst">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pmfs">
 <meta property="og:url" content="http://yoursite.com/2016/07/16/pmfs/index.html">
 <meta property="og:site_name" content="MIANBAO blog">
-<meta property="og:description" content="简单粗暴的日志1.Git clone pmfs2.复制到usr/src3.切换为root权限4.make menuconfig 找到pmfs并打开1$ make &amp;amp;&amp;amp;make modules_install install
-5.更新grub6.切换内核7.执行mount8.报错–文件系统类型错误什么的9.提示可以使用dmesg|syslog查看错误10.发现提示要安装 nss-my">
-<meta property="og:updated_time" content="2016-07-15T18:48:53.216Z">
+<meta property="og:description" content="注意不能使用LVMpmfs github首页1https://github.com/linux-pmfs/pmfs
+简单粗暴的日志1.Git clone pmfs1git clone https://github.com/linux-pmfs/pmfs
+2.复制到usr/src3.切换为root权限4.make menuconfig 找到pmfs并打开需要依赖Ubuntu1apt-get inst">
+<meta property="og:updated_time" content="2016-07-26T21:35:31.663Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pmfs">
-<meta name="twitter:description" content="简单粗暴的日志1.Git clone pmfs2.复制到usr/src3.切换为root权限4.make menuconfig 找到pmfs并打开1$ make &amp;amp;&amp;amp;make modules_install install
-5.更新grub6.切换内核7.执行mount8.报错–文件系统类型错误什么的9.提示可以使用dmesg|syslog查看错误10.发现提示要安装 nss-my">
+<meta name="twitter:description" content="注意不能使用LVMpmfs github首页1https://github.com/linux-pmfs/pmfs
+简单粗暴的日志1.Git clone pmfs1git clone https://github.com/linux-pmfs/pmfs
+2.复制到usr/src3.切换为root权限4.make menuconfig 找到pmfs并打开需要依赖Ubuntu1apt-get inst">
 
 
 
@@ -284,10 +287,16 @@
       
 
       
-        <h2 id="简单粗暴的日志"><a href="#简单粗暴的日志" class="headerlink" title="简单粗暴的日志"></a>简单粗暴的日志</h2><p>1.Git clone pmfs<br>2.复制到usr/src<br>3.切换为root权限<br>4.make menuconfig 找到pmfs并打开<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ make &amp;&amp;make modules_install install</span><br></pre></td></tr></table></figure></p>
-<p>5.更新grub<br>6.切换内核<br>7.执行mount<br>8.报错–文件系统类型错误什么的<br>9.提示可以使用dmesg|syslog查看错误<br>10.发现提示要安装 nss-myhostname<br>11.此时更新了很多软件（apt-get）<br>12.然后安装<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libnss-myhostname</span><br></pre></td></tr></table></figure></p>
-<p>14.出现报错ioremap of the pmfs image failed（1）<br>一直是这个提示= =怎么破忘记了= =<br>15.{make menuconfig中的设置}<br>pmfs[y]<br>pmfs—test[n]<br>pmfs——test——module[n]<br>pmfs——write——protect[y]<br>pmfs-xip[y]<br>16.解决问题：<br>在grub中预留内存<br>在linux那行里面加入memmap=2G$4G 留下2g运存其余备用不准用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#mount -t pmfs -o physaddr=0x100000000,init=2G none /mnt/pmfs</span></span><br></pre></td></tr></table></figure></p>
+        <p><strong>注意</strong><br>不能使用LVM<br>pmfs github首页<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/linux-pmfs/pmfs</span><br></pre></td></tr></table></figure></p>
+<h2 id="简单粗暴的日志"><a href="#简单粗暴的日志" class="headerlink" title="简单粗暴的日志"></a>简单粗暴的日志</h2><p>1.Git clone pmfs<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/linux-pmfs/pmfs</span><br></pre></td></tr></table></figure></p>
+<p>2.复制到usr/src<br>3.切换为root权限<br>4.make menuconfig 找到pmfs并打开需要依赖<br>Ubuntu<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install libncurses5-dev</span><br></pre></td></tr></table></figure></p>
+<p>centos<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install ncurses-libs yum install ncurses-devel</span><br></pre></td></tr></table></figure></p>
+<p>然后<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make menuconfig</span><br></pre></td></tr></table></figure></p>
+<p>{make menuconfig中的设置}<br>pmfs[y]<br>pmfs—test[n]<br>pmfs——test——module[n]<br>pmfs——write——protect[y]<br>pmfs-xip[y]<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ make &amp;&amp;make modules_install install</span><br></pre></td></tr></table></figure></p>
+<p>5.更新grub(上一步已经自动更新了)<br>6.切换内核<br><del>8.报错–文件系统类型错误什么的</del><br><del>9.提示可以使用dmesg|syslog查看错误</del><br><del>10.发现提示要安装 nss-myhostname</del><br><del>nss-myhostname是为了支持dmesg的</del><br><del>11.此时更新了很多软件（apt-get）</del><br><del>12.然后安装</del><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libnss-myhostname</span><br></pre></td></tr></table></figure></p>
+<p><del>14.出现报错ioremap of the pmfs image failed（1）</del><br><del>16.解决问题：</del><br>在grub中预留内存<br>在linux那行里面加入memmap=2G$4G 留下2g运存其余备用不准用<br><strong>memmap=2G$4G一定要加不然会进call trace</strong><br>7.执行mount<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#mount -t pmfs -o physaddr=0x100000000,init=2G none /mnt/pmfs</span></span><br></pre></td></tr></table></figure></p>
 <p>挂载</p>
+<p>ps.仍有问题没搞清楚<br>1.7中要设置不同位置的内存挂载时暂时没搞清楚<br>2.ubuntu 14.04成功替换 centos7出现问题，但是有人却可以，继续寻找问题所在<br>3.千万不要开LVM<br>4.千万记得要留内存空间</p>
 
       
     </div>
