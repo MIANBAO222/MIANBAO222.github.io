@@ -382,128 +382,20 @@
         
           
             <p><strong>注意</strong><br><del>1.不能使用LVM</del>（待证实）<br><del>2.虚拟机host 16.04上面出现问题，建议不要使用</del><br>pmfs github首页<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/linux-pmfs/pmfs</span><br></pre></td></tr></table></figure></p>
-<h2 id="基本教程"><a href="#基本教程" class="headerlink" title="基本教程"></a>基本教程</h2><p>###1.先把pmfs从项目中git下来<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/linux-pmfs/pmfs.git</span><br></pre></td></tr></table></figure></p>
-<p>###2.复制到usr/src(视喜好而定，视具体情况而定)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp pmfs /usr/src</span><br></pre></td></tr></table></figure></p>
-<p>###3.切换为root权限，或者全程使用sudo</p>
-<p>###4.找到pmfs并cd到此目录下，然后make menuconfig（配置内核），这一步需要依赖<br>在Ubuntu 下 以来可以由指令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># apt-get install libncurses5-dev</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="基本教程"><a href="#基本教程" class="headerlink" title="基本教程"></a>基本教程</h2><h3 id="先把pmfs从项目中git下来"><a href="#先把pmfs从项目中git下来" class="headerlink" title="先把pmfs从项目中git下来"></a>先把pmfs从项目中git下来</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/linux-pmfs/pmfs.git</span><br></pre></td></tr></table></figure>
+<h3 id="复制到usr-src-视喜好而定，视具体情况而定"><a href="#复制到usr-src-视喜好而定，视具体情况而定" class="headerlink" title="复制到usr/src(视喜好而定，视具体情况而定)"></a>复制到usr/src(视喜好而定，视具体情况而定)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp pmfs /usr/src</span><br></pre></td></tr></table></figure>
+<h3 id="切换为root权限，或者全程使用sudo"><a href="#切换为root权限，或者全程使用sudo" class="headerlink" title="切换为root权限，或者全程使用sudo"></a>切换为root权限，或者全程使用sudo</h3><h3 id="找到pmfs并cd到此目录下，然后make-menuconfig（配置内核），这一步需要依赖"><a href="#找到pmfs并cd到此目录下，然后make-menuconfig（配置内核），这一步需要依赖" class="headerlink" title="找到pmfs并cd到此目录下，然后make menuconfig（配置内核），这一步需要依赖"></a>找到pmfs并cd到此目录下，然后make menuconfig（配置内核），这一步需要依赖</h3><p>在Ubuntu 下 以来可以由指令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># apt-get install libncurses5-dev</span></span><br></pre></td></tr></table></figure></p>
 <p>来安装<br>centos下 以来可以由指令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum install ncurses-libs yum install ncurses-devel</span></span><br></pre></td></tr></table></figure></p>
 <p>来安装<br>然后进行内核配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># make menuconfig</span></span><br></pre></td></tr></table></figure></p>
 <p>{make menuconfig中的设置}（pmfs必要，其他操作默认吧大概）<br>要善用搜索功能 在make menuconfig 里面按‘/’输入搜索<br>pmfs[y]<br>pmfs—test[n]<br>pmfs——test——module[n]<br>pmfs——write——protect[y]<br>pmfs-xip[y]</p>
-<p>###5安装内核，首先gcc什么的肯定是必要的，依赖参考百度的内核编译，<br>ubuntu下的依赖可以用来解决，不过基本上都有了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># apt-get install kernel-package</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="安装内核，首先gcc什么的肯定是必要的，依赖参考百度的内核编译，"><a href="#安装内核，首先gcc什么的肯定是必要的，依赖参考百度的内核编译，" class="headerlink" title="安装内核，首先gcc什么的肯定是必要的，依赖参考百度的内核编译，"></a>安装内核，首先gcc什么的肯定是必要的，依赖参考百度的内核编译，</h3><p>ubuntu下的依赖可以用来解决，不过基本上都有了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># apt-get install kernel-package</span></span><br></pre></td></tr></table></figure></p>
 <p>centos下有开发工具包安装了就好了</p>
 <p>可采用两种方式<br>j后面的视内核数而定，不加也行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># make -j4&amp;&amp;make modules_install install</span></span><br></pre></td></tr></table></figure></p>
 <p>或者<br>j后面的视内核数而定<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># make -j4 </span></span><br><span class="line"><span class="comment">#make modules_install install</span></span><br></pre></td></tr></table></figure></p>
-<p>###6.更新grub(上一步已经自动更新了)</p>
-<p>###7.切换内核*<br>修改/etc/defult/grub之中的参数，使grub暂停，方法自行百度，在grub中选择高级-&gt;选中那个3.11+的内核版本，<br>在grub中预留内存<br>选中3.11+按“e”键<br>在linux那行里面加入memmap=2G$4G 留下2g运存其余备用不准用（依具体情况而定）</p>
-<p>###8.执行mount（挂载）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#mount -t pmfs -o physaddr=0x100000000,init=2G none /mnt/pmfs</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="更新grub-上一步已经自动更新了"><a href="#更新grub-上一步已经自动更新了" class="headerlink" title="更新grub(上一步已经自动更新了)"></a>更新grub(上一步已经自动更新了)</h3><h3 id="切换内核"><a href="#切换内核" class="headerlink" title="切换内核*"></a>切换内核*</h3><p>修改/etc/defult/grub之中的参数，使grub暂停，方法自行百度，在grub中选择高级-&gt;选中那个3.11+的内核版本，<br>在grub中预留内存<br>选中3.11+按“e”键<br>在linux那行里面加入memmap=2G$4G 留下2g运存其余备用不准用（依具体情况而定）</p>
+<p>###执行mount（挂载）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#mount -t pmfs -o physaddr=0x100000000,init=2G none /mnt/pmfs</span></span><br></pre></td></tr></table></figure></p>
 <p>挂载</p>
-<p>##ps.仍有问题没搞清楚</p>
-<p>###1.physaddr=0x100000000中要设置不同位置的内存挂载时暂时没搞清楚</p>
-<p>###2.硬件环境i7 6700k+z170主板下出现问题，虚拟机编译了的pmfs内核无法启动<br><img src="http://oaxz3kiyx.bkt.clouddn.com/2016-07-26%2000-16-00%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt="error_pag1"><br>问题待解决</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/07/hello-world/" itemprop="url">
-                  Start
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-07T02:39:17+08:00" content="2016-05-07">
-              2016-05-07
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="pmfs"><a href="#pmfs" class="headerlink" title="pmfs"></a>pmfs</h2><p>###pmfs github首页<br>？<a href="https://github.com/linux-pmfs/pmfs" target="_blank" rel="external">首页呐点这里</a></p>
-<p>###pmfs文档汇总<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://research.cs.wisc.edu/sonar/tutorial/</span><br></pre></td></tr></table></figure></p>
-<p>###pmfs教程<br>？？<a href="https://mianbao222.github.io/2016/07/16/pmfs/" target="_blank" rel="external">pmfs安装教程</a></p>
-<p>###pmfs论文<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://dl.acm.org/citation.cfm?id=2592814</span><br></pre></td></tr></table></figure></p>
-<h2 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h2><p>在找教程的时候找到了非常多旧的教程，这篇是我找到比较新的教程的也写得比较好的一篇<br>搭建<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://opiece.me/2015/04/09/hexo-guide/</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://opiece.me/2015/04/09/hexo-guide/</span><br></pre></td></tr></table></figure>
-<h2 id="好用的搜索引擎"><a href="#好用的搜索引擎" class="headerlink" title="好用的搜索引擎"></a>好用的搜索引擎</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://so.chongbuluo.com/</span><br></pre></td></tr></table></figure>
-<h2 id="用户空间文件系统–libfuse（FUSE）"><a href="#用户空间文件系统–libfuse（FUSE）" class="headerlink" title="用户空间文件系统–libfuse（FUSE）"></a>用户空间文件系统–libfuse（FUSE）</h2><p> 目的是尝试实现在pmfs上搭建该系统并实现去冗余的功能<br> github<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/libfuse/libfuse</span><br></pre></td></tr></table></figure></p>
-<p>两篇pmfs的论文<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://dl.acm.org/citation.cfm?id=2592814</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.usenix.org/legacy/events/fast11/tech/full_papers/Chen.pdf</span><br></pre></td></tr></table></figure>
-<hr>
+<h2 id="ps仍有问题没搞清楚"><a href="#ps仍有问题没搞清楚" class="headerlink" title="ps仍有问题没搞清楚"></a>ps仍有问题没搞清楚</h2><h3 id="physaddr-0x100000000中要设置不同位置的内存挂载时暂时没搞清楚"><a href="#physaddr-0x100000000中要设置不同位置的内存挂载时暂时没搞清楚" class="headerlink" title="physaddr=0x100000000中要设置不同位置的内存挂载时暂时没搞清楚"></a>physaddr=0x100000000中要设置不同位置的内存挂载时暂时没搞清楚</h3><h3 id="硬件环境i7-6700k-z170主板下出现问题，虚拟机编译了的pmfs内核无法启动"><a href="#硬件环境i7-6700k-z170主板下出现问题，虚拟机编译了的pmfs内核无法启动" class="headerlink" title="硬件环境i7 6700k+z170主板下出现问题，虚拟机编译了的pmfs内核无法启动"></a>硬件环境i7 6700k+z170主板下出现问题，虚拟机编译了的pmfs内核无法启动</h3><p><img src="http://oaxz3kiyx.bkt.clouddn.com/2016-07-26%2000-16-00%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt="error_pag1"><br>问题待解决</p>
 
           
         
@@ -599,6 +491,110 @@
           
             <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install qemu-kvm libvirt-bin virt-manager bridge-utils</span><br></pre></td></tr></table></figure>
 <h1 id="end"><a href="#end" class="headerlink" title="end"></a>end</h1>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/07/hello-world/" itemprop="url">
+                  Start
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-07T02:39:17+08:00" content="2016-05-07">
+              2016-05-07
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="pmfs"><a href="#pmfs" class="headerlink" title="pmfs"></a>pmfs</h2><h3 id="pmfs-github首页"><a href="#pmfs-github首页" class="headerlink" title="pmfs github首页"></a>pmfs github首页</h3><p><a href="https://github.com/linux-pmfs/pmfs" target="_blank" rel="external">首页呐点这里</a></p>
+<h3 id="pmfs文档汇总"><a href="#pmfs文档汇总" class="headerlink" title="pmfs文档汇总"></a>pmfs文档汇总</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://research.cs.wisc.edu/sonar/tutorial/</span><br></pre></td></tr></table></figure>
+<h3 id="pmfs教程"><a href="#pmfs教程" class="headerlink" title="pmfs教程"></a>pmfs教程</h3><p><a href="https://mianbao222.github.io/2016/07/16/pmfs/" target="_blank" rel="external">pmfs安装教程</a></p>
+<h3 id="pmfs论文"><a href="#pmfs论文" class="headerlink" title="pmfs论文"></a>pmfs论文</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://dl.acm.org/citation.cfm?id=2592814</span><br></pre></td></tr></table></figure>
+<h2 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h2><p>在找教程的时候找到了非常多旧的教程，这篇是我找到比较新的教程的也写得比较好的一篇<br>搭建<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://opiece.me/2015/04/09/hexo-guide/</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://opiece.me/2015/04/09/hexo-guide/</span><br></pre></td></tr></table></figure>
+<h2 id="好用的搜索引擎"><a href="#好用的搜索引擎" class="headerlink" title="好用的搜索引擎"></a>好用的搜索引擎</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://so.chongbuluo.com/</span><br></pre></td></tr></table></figure>
+<h2 id="用户空间文件系统–libfuse（FUSE）"><a href="#用户空间文件系统–libfuse（FUSE）" class="headerlink" title="用户空间文件系统–libfuse（FUSE）"></a>用户空间文件系统–libfuse（FUSE）</h2><p> 目的是尝试实现在pmfs上搭建该系统并实现去冗余的功能<br> github<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/libfuse/libfuse</span><br></pre></td></tr></table></figure></p>
+<p>两篇pmfs的论文<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://dl.acm.org/citation.cfm?id=2592814</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.usenix.org/legacy/events/fast11/tech/full_papers/Chen.pdf</span><br></pre></td></tr></table></figure>
+<hr>
+
           
         
       
