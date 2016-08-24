@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="任务," />
+  <meta name="keywords" content="教程," />
 
 
 
@@ -84,16 +84,28 @@
 
 
 
-<meta name="description" content="新目标当搭建完pmfs并且成功试用之后，尝试添加去冗余的功能，由于对pmfs是在内核的fs，修改难度比较大选择先尝试在pmfs上面搭建libfuse来实现去冗余的功能并且改善实现步骤1.在etx4上面尝试搭建（已完成）2.阅读文献理解libfuse，看看能否在pmfs上面搭建（已完成，将fuse_example中的fusexmp和hello挂载在pmfs的挂载点）3.尝试在pmfs挂载的磁盘上面搭">
+<meta name="description" content="#在腾讯云配置shadowsocks，利用privoxy转化为全局http代理
+##1 安装shadowsocks和privoxy1#yum install shadowsocks privoxy
+具体情况可访问shadowsocks
+##2 添加shadowsocks配置文件1#vim /etc/shadowsocks.json  //新建配置文件
+1234567891011&amp;#123;&quot;ser">
 <meta property="og:type" content="article">
-<meta property="og:title" content="new target">
-<meta property="og:url" content="http://yoursite.com/2016/07/16/target/index.html">
+<meta property="og:title" content="privoxy">
+<meta property="og:url" content="http://yoursite.com/2016/08/25/privoxy/index.html">
 <meta property="og:site_name" content="MIANBAO blog">
-<meta property="og:description" content="新目标当搭建完pmfs并且成功试用之后，尝试添加去冗余的功能，由于对pmfs是在内核的fs，修改难度比较大选择先尝试在pmfs上面搭建libfuse来实现去冗余的功能并且改善实现步骤1.在etx4上面尝试搭建（已完成）2.阅读文献理解libfuse，看看能否在pmfs上面搭建（已完成，将fuse_example中的fusexmp和hello挂载在pmfs的挂载点）3.尝试在pmfs挂载的磁盘上面搭">
-<meta property="og:updated_time" content="2016-08-05T09:14:03.379Z">
+<meta property="og:description" content="#在腾讯云配置shadowsocks，利用privoxy转化为全局http代理
+##1 安装shadowsocks和privoxy1#yum install shadowsocks privoxy
+具体情况可访问shadowsocks
+##2 添加shadowsocks配置文件1#vim /etc/shadowsocks.json  //新建配置文件
+1234567891011&amp;#123;&quot;ser">
+<meta property="og:updated_time" content="2016-08-24T18:10:31.081Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="new target">
-<meta name="twitter:description" content="新目标当搭建完pmfs并且成功试用之后，尝试添加去冗余的功能，由于对pmfs是在内核的fs，修改难度比较大选择先尝试在pmfs上面搭建libfuse来实现去冗余的功能并且改善实现步骤1.在etx4上面尝试搭建（已完成）2.阅读文献理解libfuse，看看能否在pmfs上面搭建（已完成，将fuse_example中的fusexmp和hello挂载在pmfs的挂载点）3.尝试在pmfs挂载的磁盘上面搭">
+<meta name="twitter:title" content="privoxy">
+<meta name="twitter:description" content="#在腾讯云配置shadowsocks，利用privoxy转化为全局http代理
+##1 安装shadowsocks和privoxy1#yum install shadowsocks privoxy
+具体情况可访问shadowsocks
+##2 添加shadowsocks配置文件1#vim /etc/shadowsocks.json  //新建配置文件
+1234567891011&amp;#123;&quot;ser">
 
 
 
@@ -111,7 +123,7 @@
   };
 </script>
 
-  <title> new target | MIANBAO blog </title>
+  <title> privoxy | MIANBAO blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -241,7 +253,7 @@
             
             
               
-                new target
+                privoxy
               
             
           </h1>
@@ -253,8 +265,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-16T02:29:31+08:00" content="2016-07-16">
-              2016-07-16
+            <time itemprop="dateCreated" datetime="2016-08-25T01:38:34+08:00" content="2016-08-25">
+              2016-08-25
             </time>
           </span>
 
@@ -281,7 +293,18 @@
       
 
       
-        <h2 id="新目标"><a href="#新目标" class="headerlink" title="新目标"></a>新目标</h2><p>当搭建完pmfs并且成功试用之后，尝试添加去冗余的功能，由于对pmfs是在内核的fs，修改难度比较大<br>选择先尝试在pmfs上面搭建libfuse来实现去冗余的功能并且改善<br>实现步骤<br>1.在etx4上面尝试搭建（已完成）<br>2.阅读文献理解libfuse，看看能否在pmfs上面搭建（已完成，将fuse_example中的fusexmp和hello挂载在pmfs的挂载点）<br>3.尝试在pmfs挂载的磁盘上面搭建libfuse（已完成，将fuse_example中的fusexmp和hello挂载在pmfs的挂载点）<br>4.利用FUSE完成去冗余功能（不确定是否能实现）<br>5.学习FUSE的系统编写，参照案例example中的hello.c和fusexmp.c<br>6.学习io函数重写，参考<a href="http://item.jd.com/11469694.html" target="_blank" rel="external">UNIX环境高级编程</a>一书中的文件I/O一章<br><a href="http://pan.baidu.com/s/1o87z4fw" target="_blank" rel="external">下载链接</a></p>
+        <p>#在腾讯云配置shadowsocks，利用privoxy转化为全局http代理</p>
+<p>##1 安装shadowsocks和privoxy<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#yum install shadowsocks privoxy</span></span><br></pre></td></tr></table></figure></p>
+<p>具体情况可访问<br><a href="shadowsock.org">shadowsocks</a></p>
+<p>##2 添加shadowsocks配置文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#vim /etc/shadowsocks.json  //新建配置文件</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="string">"server"</span>:<span class="string">"your server ip"</span>,<span class="comment">//填写翻墙vps的ip</span></span><br><span class="line"><span class="string">"server_port"</span>:your server port,<span class="comment">//填写翻墙vps开放的端口号</span></span><br><span class="line"><span class="string">"local_address"</span>:<span class="string">"127.0.0.1"</span>,<span class="comment">//本地</span></span><br><span class="line"><span class="string">"local_port"</span>:<span class="number">1081</span>,<span class="comment">//填写本地占用的端口号</span></span><br><span class="line"><span class="string">"password"</span>:<span class="string">"passwd"</span>,<span class="comment">//填写ssh的密码</span></span><br><span class="line"><span class="string">"timeout"</span>:<span class="number">300</span>,<span class="comment">//超时</span></span><br><span class="line"><span class="string">"method"</span>:<span class="string">"rc4-md5"</span>,<span class="comment">//加密方式</span></span><br><span class="line"><span class="string">"fast_open"</span>:<span class="literal">false</span>,</span><br><span class="line"><span class="string">"workers"</span>:<span class="number">1</span><span class="comment">//线程数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>##3 开启socks5代理 </p>
+<p>前台方式<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#ss-local -c /etc/shadowsocks.json</span></span><br></pre></td></tr></table></figure></p>
+<p>后台方式<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#nohup /usr/bin/ssserver -c /etc/shadowsocks.json &gt;/dev/null 2&gt;&amp;1 &amp;</span></span><br></pre></td></tr></table></figure></p>
+<p>#4 开启privoxy将socks5-&gt;http代理<br>配置privoxy<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#vim /etc/privoxy/config</span></span><br></pre></td></tr></table></figure></p>
+<p>修改监听端口和代理配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">forward-socks5 / 127.0.0.1:1081//填写自己开放的端口号，比如我之前就是开放的1081</span><br></pre></td></tr></table></figure></p>
+<p>*默认监听的是8118端口，不喜欢可以自己改</p>
+<p>#5 全局代理<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#export http_proxy='http://localhost:8118'</span></span><br><span class="line"><span class="comment">#export https_proxy='http://localhost:8118'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">test</span>:</span><br><span class="line">wget www.google.com</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -303,7 +326,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/任务/" rel="tag">#任务</a>
+            <a href="/tags/教程/" rel="tag">#教程</a>
           
         </div>
       
@@ -312,17 +335,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/16/pmfs/" rel="next" title="pmfs">
-                <i class="fa fa-chevron-left"></i> pmfs
+              <a href="/2016/08/03/FUSE/" rel="next" title="FUSE">
+                <i class="fa fa-chevron-left"></i> FUSE
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/08/03/FUSE/" rel="prev" title="FUSE">
-                FUSE <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -429,7 +448,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#新目标"><span class="nav-number">1.</span> <span class="nav-text">新目标</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>
