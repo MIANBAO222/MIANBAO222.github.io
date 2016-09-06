@@ -287,18 +287,17 @@
       
         
           
-            <p>#在腾讯云配置shadowsocks，利用privoxy转化为全局http代理</p>
-<p>##1 安装shadowsocks和privoxy<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#yum install shadowsocks privoxy</span></span><br></pre></td></tr></table></figure></p>
+            <h1 id="在腾讯云配置shadowsocks，利用privoxy转化为全局http代理"><a href="#在腾讯云配置shadowsocks，利用privoxy转化为全局http代理" class="headerlink" title="在腾讯云配置shadowsocks，利用privoxy转化为全局http代理"></a>在腾讯云配置shadowsocks，利用privoxy转化为全局http代理</h1><h2 id="1-安装shadowsocks和privoxy"><a href="#1-安装shadowsocks和privoxy" class="headerlink" title="1 安装shadowsocks和privoxy"></a>1 安装shadowsocks和privoxy</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#yum install shadowsocks privoxy</span></span><br></pre></td></tr></table></figure>
 <p>具体情况可访问<br><a href="shadowsock.org">shadowsocks</a></p>
-<p>##2 添加shadowsocks配置文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#vim /etc/shadowsocks.json  //新建配置文件</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="2-添加shadowsocks配置文件"><a href="#2-添加shadowsocks配置文件" class="headerlink" title="2 添加shadowsocks配置文件"></a>2 添加shadowsocks配置文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#vim /etc/shadowsocks.json  //新建配置文件</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="string">"server"</span>:<span class="string">"your server ip"</span>,<span class="comment">//填写翻墙vps的ip</span></span><br><span class="line"><span class="string">"server_port"</span>:your server port,<span class="comment">//填写翻墙vps开放的端口号</span></span><br><span class="line"><span class="string">"local_address"</span>:<span class="string">"127.0.0.1"</span>,<span class="comment">//本地</span></span><br><span class="line"><span class="string">"local_port"</span>:<span class="number">1081</span>,<span class="comment">//填写本地占用的端口号</span></span><br><span class="line"><span class="string">"password"</span>:<span class="string">"passwd"</span>,<span class="comment">//填写ssh的密码</span></span><br><span class="line"><span class="string">"timeout"</span>:<span class="number">300</span>,<span class="comment">//超时</span></span><br><span class="line"><span class="string">"method"</span>:<span class="string">"rc4-md5"</span>,<span class="comment">//加密方式</span></span><br><span class="line"><span class="string">"fast_open"</span>:<span class="literal">false</span>,</span><br><span class="line"><span class="string">"workers"</span>:<span class="number">1</span><span class="comment">//线程数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>##3 开启socks5代理 </p>
-<p>前台方式<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#ss-local -c /etc/shadowsocks.json</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="3-开启socks5代理"><a href="#3-开启socks5代理" class="headerlink" title="3 开启socks5代理"></a>3 开启socks5代理</h2><p>前台方式<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#ss-local -c /etc/shadowsocks.json</span></span><br></pre></td></tr></table></figure></p>
 <p>后台方式<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#nohup /usr/bin/ssserver -c /etc/shadowsocks.json &gt;/dev/null 2&gt;&amp;1 &amp;</span></span><br></pre></td></tr></table></figure></p>
-<p>#4 开启privoxy将socks5-&gt;http代理<br>配置privoxy<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#vim /etc/privoxy/config</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="4-开启privoxy将socks5-gt-http代理"><a href="#4-开启privoxy将socks5-gt-http代理" class="headerlink" title="4 开启privoxy将socks5-&gt;http代理"></a>4 开启privoxy将socks5-&gt;http代理</h1><p>配置privoxy<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#vim /etc/privoxy/config</span></span><br></pre></td></tr></table></figure></p>
 <p>修改监听端口和代理配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">forward-socks5 / 127.0.0.1:1081//填写自己开放的端口号，比如我之前就是开放的1081</span><br></pre></td></tr></table></figure></p>
 <p>*默认监听的是8118端口，不喜欢可以自己改</p>
-<p>#5 全局代理<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#export http_proxy='http://localhost:8118'</span></span><br><span class="line"><span class="comment">#export https_proxy='http://localhost:8118'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">test</span>:</span><br><span class="line">wget www.google.com</span><br></pre></td></tr></table></figure></p>
+<h1 id="5-全局代理"><a href="#5-全局代理" class="headerlink" title="5 全局代理"></a>5 全局代理</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#export http_proxy='http://localhost:8118'</span></span><br><span class="line"><span class="comment">#export https_proxy='http://localhost:8118'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">test</span>:</span><br><span class="line">wget www.google.com</span><br></pre></td></tr></table></figure>
+<p>参考文章<br><a href="http://blog.csdn.net/li740207611/article/details/52045471" target="_blank" rel="external">http://blog.csdn.net/li740207611/article/details/52045471</a></p>
 
           
         
@@ -580,7 +579,7 @@
       
         
           
-            <p><strong>注意</strong><br><del>1.不能使用LVM</del>（待证实）<br><del>2.虚拟机host 16.04上面出现问题，建议不要使用</del><br>pmfs github首页<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/linux-pmfs/pmfs</span><br></pre></td></tr></table></figure></p>
+            <p><strong>注意</strong><br><del>1.不能使用LVM</del>（可以使用）<br><del>2.虚拟机host 16.04上面出现问题，建议不要使用</del><br>pmfs github首页<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/linux-pmfs/pmfs</span><br></pre></td></tr></table></figure></p>
 <h2 id="基本教程"><a href="#基本教程" class="headerlink" title="基本教程"></a>基本教程</h2><h3 id="先把pmfs从项目中git下来"><a href="#先把pmfs从项目中git下来" class="headerlink" title="先把pmfs从项目中git下来"></a>先把pmfs从项目中git下来</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/linux-pmfs/pmfs.git</span><br></pre></td></tr></table></figure>
 <h3 id="复制到usr-src-视喜好而定，视具体情况而定"><a href="#复制到usr-src-视喜好而定，视具体情况而定" class="headerlink" title="复制到usr/src(视喜好而定，视具体情况而定)"></a>复制到usr/src(视喜好而定，视具体情况而定)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp pmfs /usr/src</span><br></pre></td></tr></table></figure>
 <h3 id="切换为root权限，或者全程使用sudo"><a href="#切换为root权限，或者全程使用sudo" class="headerlink" title="切换为root权限，或者全程使用sudo"></a>切换为root权限，或者全程使用sudo</h3><h3 id="找到pmfs并cd到此目录下，然后make-menuconfig（配置内核），这一步需要依赖"><a href="#找到pmfs并cd到此目录下，然后make-menuconfig（配置内核），这一步需要依赖" class="headerlink" title="找到pmfs并cd到此目录下，然后make menuconfig（配置内核），这一步需要依赖"></a>找到pmfs并cd到此目录下，然后make menuconfig（配置内核），这一步需要依赖</h3><p>在Ubuntu 下 以来可以由指令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># apt-get install libncurses5-dev</span></span><br></pre></td></tr></table></figure></p>
@@ -591,11 +590,107 @@
 <p>centos下有开发工具包安装了就好了</p>
 <p>可采用两种方式<br>j后面的视内核数而定，不加也行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># make -j4&amp;&amp;make modules_install install</span></span><br></pre></td></tr></table></figure></p>
 <p>或者<br>j后面的视内核数而定<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># make -j4 </span></span><br><span class="line"><span class="comment">#make modules_install install</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="更新grub-上一步已经自动更新了"><a href="#更新grub-上一步已经自动更新了" class="headerlink" title="更新grub(上一步已经自动更新了)"></a>更新grub(上一步已经自动更新了)</h3><h3 id="切换内核"><a href="#切换内核" class="headerlink" title="切换内核*"></a>切换内核*</h3><p>修改/etc/defult/grub之中的参数，使grub暂停，方法自行百度，在grub中选择高级-&gt;选中那个3.11+的内核版本，<br>在grub中预留内存<br>选中3.11+按“e”键<br>在linux那行里面加入memmap=2G$4G 留下2g运存其余备用不准用（依具体情况而定）</p>
+<h3 id="更新grub-上一步已经自动更新了"><a href="#更新grub-上一步已经自动更新了" class="headerlink" title="更新grub(上一步已经自动更新了)"></a>更新grub(上一步已经自动更新了)</h3><h3 id="切换内核"><a href="#切换内核" class="headerlink" title="切换内核*"></a>切换内核*</h3><p>修改/etc/defult/grub之中的参数，使grub暂停，方法自行百度，在grub中选择高级-&gt;选中那个3.11+的内核版本，<br>在grub中预留内存<br>选中3.11+按“e”键<br>在linux那行里面加入memmap=2G$4G 在4g后留下2g运存，其余前面4g作为内存使用（依具体情况而定）</p>
 <p>###执行mount（挂载）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#mount -t pmfs -o physaddr=0x100000000,init=2G none /mnt/pmfs</span></span><br></pre></td></tr></table></figure></p>
 <p>挂载</p>
-<h2 id="ps仍有问题没搞清楚"><a href="#ps仍有问题没搞清楚" class="headerlink" title="ps仍有问题没搞清楚"></a>ps仍有问题没搞清楚</h2><h3 id="physaddr-0x100000000中要设置不同位置的内存挂载时暂时没搞清楚"><a href="#physaddr-0x100000000中要设置不同位置的内存挂载时暂时没搞清楚" class="headerlink" title="physaddr=0x100000000中要设置不同位置的内存挂载时暂时没搞清楚"></a>physaddr=0x100000000中要设置不同位置的内存挂载时暂时没搞清楚</h3><h3 id="硬件环境i7-6700k-z170主板下出现问题，虚拟机编译了的pmfs内核无法启动"><a href="#硬件环境i7-6700k-z170主板下出现问题，虚拟机编译了的pmfs内核无法启动" class="headerlink" title="硬件环境i7 6700k+z170主板下出现问题，虚拟机编译了的pmfs内核无法启动"></a>硬件环境i7 6700k+z170主板下出现问题，虚拟机编译了的pmfs内核无法启动</h3><p><img src="http://oaxz3kiyx.bkt.clouddn.com/2016-07-26%2000-16-00%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt="error_pag1"><br>问题待解决</p>
+<h2 id="mount-memmap-指令讲解"><a href="#mount-memmap-指令讲解" class="headerlink" title="mount memmap 指令讲解"></a>mount memmap 指令讲解</h2><p>memmap=2G$4G 在4G后面预留2G的内存空间给pmfs用，如果内存不够，可以采用类似于memmap=512M$1G这样的<br>physaddr=0x100000000 为4g的16进制表示 0x100000000(16) =1024<em>1024</em>4096(10),这里意指预存空间从4g开始</p>
+<h2 id="ps仍有问题没搞清楚"><a href="#ps仍有问题没搞清楚" class="headerlink" title="ps仍有问题没搞清楚"></a>ps仍有问题没搞清楚</h2><p><del>### physaddr=0x100000000中要设置不同位置的内存挂载时暂时没搞清楚</del></p>
+<h3 id="硬件环境i7-6700k-z170主板下出现问题，虚拟机编译了的pmfs内核无法启动"><a href="#硬件环境i7-6700k-z170主板下出现问题，虚拟机编译了的pmfs内核无法启动" class="headerlink" title="硬件环境i7 6700k+z170主板下出现问题，虚拟机编译了的pmfs内核无法启动"></a>硬件环境i7 6700k+z170主板下出现问题，虚拟机编译了的pmfs内核无法启动</h3><p><img src="http://oaxz3kiyx.bkt.clouddn.com/2016-07-26%2000-16-00%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt="error_pag1"><br>问题待解决</p>
 
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/07/my-new-post/" itemprop="url">
+                  linux下qemu虚拟机的搭建和管理
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-07T02:39:17+08:00" content="2016-05-07">
+              2016-05-07
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install qemu-kvm libvirt-bin virt-manager bridge-utils</span><br></pre></td></tr></table></figure>
+<h1 id="end"><a href="#end" class="headerlink" title="end"></a>end</h1>
           
         
       
@@ -700,100 +795,6 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.usenix.org/legacy/events/fast11/tech/full_papers/Chen.pdf</span><br></pre></td></tr></table></figure>
 <hr>
 
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/07/my-new-post/" itemprop="url">
-                  linux下qemu虚拟机的搭建和管理
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-07T02:39:17+08:00" content="2016-05-07">
-              2016-05-07
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install qemu-kvm libvirt-bin virt-manager bridge-utils</span><br></pre></td></tr></table></figure>
-<h1 id="end"><a href="#end" class="headerlink" title="end"></a>end</h1>
           
         
       

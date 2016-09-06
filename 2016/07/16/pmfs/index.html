@@ -84,23 +84,23 @@
 
 
 
-<meta name="description" content="注意1.不能使用LVM（待证实）2.虚拟机host 16.04上面出现问题，建议不要使用pmfs github首页1https://github.com/linux-pmfs/pmfs
+<meta name="description" content="注意1.不能使用LVM（可以使用）2.虚拟机host 16.04上面出现问题，建议不要使用pmfs github首页1https://github.com/linux-pmfs/pmfs
 基本教程先把pmfs从项目中git下来1git clone https://github.com/linux-pmfs/pmfs.git
-复制到usr/src(视喜好而定，视具体情况而定)1cp pmfs /usr">
+复制到usr/src(视喜好而定，视具体情况而定)1cp pmfs /us">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pmfs">
 <meta property="og:url" content="http://yoursite.com/2016/07/16/pmfs/index.html">
 <meta property="og:site_name" content="MIANBAO blog">
-<meta property="og:description" content="注意1.不能使用LVM（待证实）2.虚拟机host 16.04上面出现问题，建议不要使用pmfs github首页1https://github.com/linux-pmfs/pmfs
+<meta property="og:description" content="注意1.不能使用LVM（可以使用）2.虚拟机host 16.04上面出现问题，建议不要使用pmfs github首页1https://github.com/linux-pmfs/pmfs
 基本教程先把pmfs从项目中git下来1git clone https://github.com/linux-pmfs/pmfs.git
-复制到usr/src(视喜好而定，视具体情况而定)1cp pmfs /usr">
+复制到usr/src(视喜好而定，视具体情况而定)1cp pmfs /us">
 <meta property="og:image" content="http://oaxz3kiyx.bkt.clouddn.com/2016-07-26%2000-16-00%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png">
-<meta property="og:updated_time" content="2016-08-02T14:15:29.024Z">
+<meta property="og:updated_time" content="2016-09-06T17:28:26.600Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pmfs">
-<meta name="twitter:description" content="注意1.不能使用LVM（待证实）2.虚拟机host 16.04上面出现问题，建议不要使用pmfs github首页1https://github.com/linux-pmfs/pmfs
+<meta name="twitter:description" content="注意1.不能使用LVM（可以使用）2.虚拟机host 16.04上面出现问题，建议不要使用pmfs github首页1https://github.com/linux-pmfs/pmfs
 基本教程先把pmfs从项目中git下来1git clone https://github.com/linux-pmfs/pmfs.git
-复制到usr/src(视喜好而定，视具体情况而定)1cp pmfs /usr">
+复制到usr/src(视喜好而定，视具体情况而定)1cp pmfs /us">
 <meta name="twitter:image" content="http://oaxz3kiyx.bkt.clouddn.com/2016-07-26%2000-16-00%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png">
 
 
@@ -289,7 +289,7 @@
       
 
       
-        <p><strong>注意</strong><br><del>1.不能使用LVM</del>（待证实）<br><del>2.虚拟机host 16.04上面出现问题，建议不要使用</del><br>pmfs github首页<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/linux-pmfs/pmfs</span><br></pre></td></tr></table></figure></p>
+        <p><strong>注意</strong><br><del>1.不能使用LVM</del>（可以使用）<br><del>2.虚拟机host 16.04上面出现问题，建议不要使用</del><br>pmfs github首页<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/linux-pmfs/pmfs</span><br></pre></td></tr></table></figure></p>
 <h2 id="基本教程"><a href="#基本教程" class="headerlink" title="基本教程"></a>基本教程</h2><h3 id="先把pmfs从项目中git下来"><a href="#先把pmfs从项目中git下来" class="headerlink" title="先把pmfs从项目中git下来"></a>先把pmfs从项目中git下来</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/linux-pmfs/pmfs.git</span><br></pre></td></tr></table></figure>
 <h3 id="复制到usr-src-视喜好而定，视具体情况而定"><a href="#复制到usr-src-视喜好而定，视具体情况而定" class="headerlink" title="复制到usr/src(视喜好而定，视具体情况而定)"></a>复制到usr/src(视喜好而定，视具体情况而定)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp pmfs /usr/src</span><br></pre></td></tr></table></figure>
 <h3 id="切换为root权限，或者全程使用sudo"><a href="#切换为root权限，或者全程使用sudo" class="headerlink" title="切换为root权限，或者全程使用sudo"></a>切换为root权限，或者全程使用sudo</h3><h3 id="找到pmfs并cd到此目录下，然后make-menuconfig（配置内核），这一步需要依赖"><a href="#找到pmfs并cd到此目录下，然后make-menuconfig（配置内核），这一步需要依赖" class="headerlink" title="找到pmfs并cd到此目录下，然后make menuconfig（配置内核），这一步需要依赖"></a>找到pmfs并cd到此目录下，然后make menuconfig（配置内核），这一步需要依赖</h3><p>在Ubuntu 下 以来可以由指令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># apt-get install libncurses5-dev</span></span><br></pre></td></tr></table></figure></p>
@@ -300,10 +300,12 @@
 <p>centos下有开发工具包安装了就好了</p>
 <p>可采用两种方式<br>j后面的视内核数而定，不加也行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># make -j4&amp;&amp;make modules_install install</span></span><br></pre></td></tr></table></figure></p>
 <p>或者<br>j后面的视内核数而定<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># make -j4 </span></span><br><span class="line"><span class="comment">#make modules_install install</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="更新grub-上一步已经自动更新了"><a href="#更新grub-上一步已经自动更新了" class="headerlink" title="更新grub(上一步已经自动更新了)"></a>更新grub(上一步已经自动更新了)</h3><h3 id="切换内核"><a href="#切换内核" class="headerlink" title="切换内核*"></a>切换内核*</h3><p>修改/etc/defult/grub之中的参数，使grub暂停，方法自行百度，在grub中选择高级-&gt;选中那个3.11+的内核版本，<br>在grub中预留内存<br>选中3.11+按“e”键<br>在linux那行里面加入memmap=2G$4G 留下2g运存其余备用不准用（依具体情况而定）</p>
+<h3 id="更新grub-上一步已经自动更新了"><a href="#更新grub-上一步已经自动更新了" class="headerlink" title="更新grub(上一步已经自动更新了)"></a>更新grub(上一步已经自动更新了)</h3><h3 id="切换内核"><a href="#切换内核" class="headerlink" title="切换内核*"></a>切换内核*</h3><p>修改/etc/defult/grub之中的参数，使grub暂停，方法自行百度，在grub中选择高级-&gt;选中那个3.11+的内核版本，<br>在grub中预留内存<br>选中3.11+按“e”键<br>在linux那行里面加入memmap=2G$4G 在4g后留下2g运存，其余前面4g作为内存使用（依具体情况而定）</p>
 <p>###执行mount（挂载）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#mount -t pmfs -o physaddr=0x100000000,init=2G none /mnt/pmfs</span></span><br></pre></td></tr></table></figure></p>
 <p>挂载</p>
-<h2 id="ps仍有问题没搞清楚"><a href="#ps仍有问题没搞清楚" class="headerlink" title="ps仍有问题没搞清楚"></a>ps仍有问题没搞清楚</h2><h3 id="physaddr-0x100000000中要设置不同位置的内存挂载时暂时没搞清楚"><a href="#physaddr-0x100000000中要设置不同位置的内存挂载时暂时没搞清楚" class="headerlink" title="physaddr=0x100000000中要设置不同位置的内存挂载时暂时没搞清楚"></a>physaddr=0x100000000中要设置不同位置的内存挂载时暂时没搞清楚</h3><h3 id="硬件环境i7-6700k-z170主板下出现问题，虚拟机编译了的pmfs内核无法启动"><a href="#硬件环境i7-6700k-z170主板下出现问题，虚拟机编译了的pmfs内核无法启动" class="headerlink" title="硬件环境i7 6700k+z170主板下出现问题，虚拟机编译了的pmfs内核无法启动"></a>硬件环境i7 6700k+z170主板下出现问题，虚拟机编译了的pmfs内核无法启动</h3><p><img src="http://oaxz3kiyx.bkt.clouddn.com/2016-07-26%2000-16-00%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt="error_pag1"><br>问题待解决</p>
+<h2 id="mount-memmap-指令讲解"><a href="#mount-memmap-指令讲解" class="headerlink" title="mount memmap 指令讲解"></a>mount memmap 指令讲解</h2><p>memmap=2G$4G 在4G后面预留2G的内存空间给pmfs用，如果内存不够，可以采用类似于memmap=512M$1G这样的<br>physaddr=0x100000000 为4g的16进制表示 0x100000000(16) =1024<em>1024</em>4096(10),这里意指预存空间从4g开始</p>
+<h2 id="ps仍有问题没搞清楚"><a href="#ps仍有问题没搞清楚" class="headerlink" title="ps仍有问题没搞清楚"></a>ps仍有问题没搞清楚</h2><p><del>### physaddr=0x100000000中要设置不同位置的内存挂载时暂时没搞清楚</del></p>
+<h3 id="硬件环境i7-6700k-z170主板下出现问题，虚拟机编译了的pmfs内核无法启动"><a href="#硬件环境i7-6700k-z170主板下出现问题，虚拟机编译了的pmfs内核无法启动" class="headerlink" title="硬件环境i7 6700k+z170主板下出现问题，虚拟机编译了的pmfs内核无法启动"></a>硬件环境i7 6700k+z170主板下出现问题，虚拟机编译了的pmfs内核无法启动</h3><p><img src="http://oaxz3kiyx.bkt.clouddn.com/2016-07-26%2000-16-00%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt="error_pag1"><br>问题待解决</p>
 
       
     </div>
@@ -334,8 +336,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/07/hello-world/" rel="next" title="Start">
-                <i class="fa fa-chevron-left"></i> Start
+              <a href="/2016/05/07/my-new-post/" rel="next" title="linux下qemu虚拟机的搭建和管理">
+                <i class="fa fa-chevron-left"></i> linux下qemu虚拟机的搭建和管理
               </a>
             
           </div>
@@ -451,7 +453,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本教程"><span class="nav-number">1.</span> <span class="nav-text">基本教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#先把pmfs从项目中git下来"><span class="nav-number">1.1.</span> <span class="nav-text">先把pmfs从项目中git下来</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复制到usr-src-视喜好而定，视具体情况而定"><span class="nav-number">1.2.</span> <span class="nav-text">复制到usr/src(视喜好而定，视具体情况而定)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#切换为root权限，或者全程使用sudo"><span class="nav-number">1.3.</span> <span class="nav-text">切换为root权限，或者全程使用sudo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#找到pmfs并cd到此目录下，然后make-menuconfig（配置内核），这一步需要依赖"><span class="nav-number">1.4.</span> <span class="nav-text">找到pmfs并cd到此目录下，然后make menuconfig（配置内核），这一步需要依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装内核，首先gcc什么的肯定是必要的，依赖参考百度的内核编译，"><span class="nav-number">1.5.</span> <span class="nav-text">安装内核，首先gcc什么的肯定是必要的，依赖参考百度的内核编译，</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新grub-上一步已经自动更新了"><span class="nav-number">1.6.</span> <span class="nav-text">更新grub(上一步已经自动更新了)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#切换内核"><span class="nav-number">1.7.</span> <span class="nav-text">切换内核*</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ps仍有问题没搞清楚"><span class="nav-number">2.</span> <span class="nav-text">ps仍有问题没搞清楚</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#physaddr-0x100000000中要设置不同位置的内存挂载时暂时没搞清楚"><span class="nav-number">2.1.</span> <span class="nav-text">physaddr=0x100000000中要设置不同位置的内存挂载时暂时没搞清楚</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#硬件环境i7-6700k-z170主板下出现问题，虚拟机编译了的pmfs内核无法启动"><span class="nav-number">2.2.</span> <span class="nav-text">硬件环境i7 6700k+z170主板下出现问题，虚拟机编译了的pmfs内核无法启动</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本教程"><span class="nav-number">1.</span> <span class="nav-text">基本教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#先把pmfs从项目中git下来"><span class="nav-number">1.1.</span> <span class="nav-text">先把pmfs从项目中git下来</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复制到usr-src-视喜好而定，视具体情况而定"><span class="nav-number">1.2.</span> <span class="nav-text">复制到usr/src(视喜好而定，视具体情况而定)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#切换为root权限，或者全程使用sudo"><span class="nav-number">1.3.</span> <span class="nav-text">切换为root权限，或者全程使用sudo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#找到pmfs并cd到此目录下，然后make-menuconfig（配置内核），这一步需要依赖"><span class="nav-number">1.4.</span> <span class="nav-text">找到pmfs并cd到此目录下，然后make menuconfig（配置内核），这一步需要依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装内核，首先gcc什么的肯定是必要的，依赖参考百度的内核编译，"><span class="nav-number">1.5.</span> <span class="nav-text">安装内核，首先gcc什么的肯定是必要的，依赖参考百度的内核编译，</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新grub-上一步已经自动更新了"><span class="nav-number">1.6.</span> <span class="nav-text">更新grub(上一步已经自动更新了)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#切换内核"><span class="nav-number">1.7.</span> <span class="nav-text">切换内核*</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mount-memmap-指令讲解"><span class="nav-number">2.</span> <span class="nav-text">mount memmap 指令讲解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ps仍有问题没搞清楚"><span class="nav-number">3.</span> <span class="nav-text">ps仍有问题没搞清楚</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#硬件环境i7-6700k-z170主板下出现问题，虚拟机编译了的pmfs内核无法启动"><span class="nav-number">3.1.</span> <span class="nav-text">硬件环境i7 6700k+z170主板下出现问题，虚拟机编译了的pmfs内核无法启动</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
