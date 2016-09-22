@@ -243,6 +243,101 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/22/how-to-remove/" itemprop="url">
+                  去冗余思路及部分实现
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-22T16:49:50+08:00" content="2016-09-22">
+              2016-09-22
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="去冗余思路及部分实现"><a href="#去冗余思路及部分实现" class="headerlink" title="去冗余思路及部分实现"></a>去冗余思路及部分实现</h1><h2 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h2><p>利用fuse来在用户空间完成一个去冗余的效果<br><img src="http://oaxz3kiyx.bkt.clouddn.com/%E5%8E%BB%E5%86%97%E4%BD%99%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F.png" alt="image"></p>
+<h2 id="哈希函数采用sha1"><a href="#哈希函数采用sha1" class="headerlink" title="哈希函数采用sha1"></a>哈希函数采用sha1</h2><p>计算输出函数为<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">file_sha_calculate</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *path，<span class="keyword">char</span> filename[<span class="number">32</span>])</span></span>&#123;</span><br><span class="line">	 SHA_CTX stx;</span><br><span class="line">     <span class="keyword">unsigned</span> <span class="keyword">char</span> outmd[<span class="number">20</span>];<span class="comment">//注意这里的字符个数为20</span></span><br><span class="line">     <span class="keyword">char</span> buffer[<span class="number">1024</span>];</span><br><span class="line">     <span class="comment">//char filename[32];</span></span><br><span class="line">     <span class="keyword">int</span> len=<span class="number">0</span>;</span><br><span class="line">     <span class="keyword">int</span> i;</span><br><span class="line">     <span class="keyword">int</span> fp=<span class="number">0</span>;</span><br><span class="line">     <span class="built_in">memset</span>(outmd,<span class="number">0</span>,<span class="keyword">sizeof</span>(outmd));</span><br><span class="line">     <span class="comment">//memset(filename,0,sizeof(filename));</span></span><br><span class="line">     <span class="built_in">memset</span>(buffer,<span class="number">0</span>,<span class="keyword">sizeof</span>(buffer));</span><br><span class="line">     <span class="comment">//printf("请输入文件名，用于计算SHA1值:");</span></span><br><span class="line">     <span class="comment">//scanf("%s",filename);</span></span><br><span class="line">     fp=open(filename,O_RDONLY);</span><br><span class="line">     <span class="keyword">if</span>(fp&lt;<span class="number">0</span>)</span><br><span class="line">     &#123;</span><br><span class="line">         <span class="built_in">printf</span>(<span class="string">"Can't open file\n"</span>);</span><br><span class="line">         return <span class="number">0</span>;</span><br><span class="line">     &#125; </span><br><span class="line">     SHA1_Init(&amp;stx);</span><br><span class="line">     <span class="keyword">while</span>((len=fread(buffer,<span class="number">1</span>,<span class="number">1024</span>,fp))&gt;<span class="number">0</span>)</span><br><span class="line">     &#123;</span><br><span class="line">         SHA1_Update(&amp;stx,buffer,len);</span><br><span class="line">         <span class="built_in">memset</span>(buffer,<span class="number">0</span>,<span class="keyword">sizeof</span>(buffer));</span><br><span class="line">     &#125;</span><br><span class="line">     SHA1_Final(outmd,&amp;stx);</span><br><span class="line"> </span><br><span class="line">     <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">20</span>;i&lt;i++)</span><br><span class="line">     &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%02X"</span>,outmd[i]);</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    return <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/25/privoxy/" itemprop="url">
                   privoxy
                 </a>
@@ -645,100 +740,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/05/07/my-new-post/" itemprop="url">
-                  linux下qemu虚拟机的搭建和管理
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-07T02:39:17+08:00" content="2016-05-07">
-              2016-05-07
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install qemu-kvm libvirt-bin virt-manager bridge-utils</span><br></pre></td></tr></table></figure>
-<h1 id="end"><a href="#end" class="headerlink" title="end"></a>end</h1>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/05/07/hello-world/" itemprop="url">
                   Start
                 </a>
@@ -822,6 +823,100 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/07/my-new-post/" itemprop="url">
+                  linux下qemu虚拟机的搭建和管理
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-07T02:39:17+08:00" content="2016-05-07">
+              2016-05-07
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install qemu-kvm libvirt-bin virt-manager bridge-utils</span><br></pre></td></tr></table></figure>
+<h1 id="end"><a href="#end" class="headerlink" title="end"></a>end</h1>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -863,7 +958,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
