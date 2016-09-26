@@ -85,24 +85,18 @@
 
 
 <meta name="description" content="在腾讯云配置shadowsocks，利用privoxy转化为全局http代理1 安装shadowsocks和privoxy1#yum install shadowsocks privoxy
-具体情况可访问shadowsocks
-2 添加shadowsocks配置文件1#vim /etc/shadowsocks.json  //新建配置文件
-1234567891011&amp;#123;&quot;server&quot;:&quot;">
+具体情况可访问shadowsocks">
 <meta property="og:type" content="article">
 <meta property="og:title" content="privoxy">
 <meta property="og:url" content="http://yoursite.com/2016/08/25/privoxy/index.html">
 <meta property="og:site_name" content="MIANBAO blog">
 <meta property="og:description" content="在腾讯云配置shadowsocks，利用privoxy转化为全局http代理1 安装shadowsocks和privoxy1#yum install shadowsocks privoxy
-具体情况可访问shadowsocks
-2 添加shadowsocks配置文件1#vim /etc/shadowsocks.json  //新建配置文件
-1234567891011&amp;#123;&quot;server&quot;:&quot;">
-<meta property="og:updated_time" content="2016-09-06T17:29:22.240Z">
+具体情况可访问shadowsocks">
+<meta property="og:updated_time" content="2016-09-26T15:43:40.050Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="privoxy">
 <meta name="twitter:description" content="在腾讯云配置shadowsocks，利用privoxy转化为全局http代理1 安装shadowsocks和privoxy1#yum install shadowsocks privoxy
-具体情况可访问shadowsocks
-2 添加shadowsocks配置文件1#vim /etc/shadowsocks.json  //新建配置文件
-1234567891011&amp;#123;&quot;server&quot;:&quot;">
+具体情况可访问shadowsocks">
 
 
 
@@ -291,7 +285,7 @@
 
       
         <h1 id="在腾讯云配置shadowsocks，利用privoxy转化为全局http代理"><a href="#在腾讯云配置shadowsocks，利用privoxy转化为全局http代理" class="headerlink" title="在腾讯云配置shadowsocks，利用privoxy转化为全局http代理"></a>在腾讯云配置shadowsocks，利用privoxy转化为全局http代理</h1><h2 id="1-安装shadowsocks和privoxy"><a href="#1-安装shadowsocks和privoxy" class="headerlink" title="1 安装shadowsocks和privoxy"></a>1 安装shadowsocks和privoxy</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#yum install shadowsocks privoxy</span></span><br></pre></td></tr></table></figure>
-<p>具体情况可访问<br><a href="shadowsock.org">shadowsocks</a></p>
+<p>具体情况可访问<br><a href="shadowsock.org">shadowsocks</a><br><a id="more"></a></p>
 <h2 id="2-添加shadowsocks配置文件"><a href="#2-添加shadowsocks配置文件" class="headerlink" title="2 添加shadowsocks配置文件"></a>2 添加shadowsocks配置文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#vim /etc/shadowsocks.json  //新建配置文件</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="string">"server"</span>:<span class="string">"your server ip"</span>,<span class="comment">//填写翻墙vps的ip</span></span><br><span class="line"><span class="string">"server_port"</span>:your server port,<span class="comment">//填写翻墙vps开放的端口号</span></span><br><span class="line"><span class="string">"local_address"</span>:<span class="string">"127.0.0.1"</span>,<span class="comment">//本地</span></span><br><span class="line"><span class="string">"local_port"</span>:<span class="number">1081</span>,<span class="comment">//填写本地占用的端口号</span></span><br><span class="line"><span class="string">"password"</span>:<span class="string">"passwd"</span>,<span class="comment">//填写ssh的密码</span></span><br><span class="line"><span class="string">"timeout"</span>:<span class="number">300</span>,<span class="comment">//超时</span></span><br><span class="line"><span class="string">"method"</span>:<span class="string">"rc4-md5"</span>,<span class="comment">//加密方式</span></span><br><span class="line"><span class="string">"fast_open"</span>:<span class="literal">false</span>,</span><br><span class="line"><span class="string">"workers"</span>:<span class="number">1</span><span class="comment">//线程数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="3-开启socks5代理"><a href="#3-开启socks5代理" class="headerlink" title="3 开启socks5代理"></a>3 开启socks5代理</h2><p>前台方式<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#ss-local -c /etc/shadowsocks.json</span></span><br></pre></td></tr></table></figure></p>

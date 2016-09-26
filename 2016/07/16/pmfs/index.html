@@ -84,23 +84,17 @@
 
 
 
-<meta name="description" content="注意1.不能使用LVM（可以使用）2.虚拟机host 16.04上面出现问题，建议不要使用pmfs github首页1https://github.com/linux-pmfs/pmfs
-基本教程先把pmfs从项目中git下来1git clone https://github.com/linux-pmfs/pmfs.git
-复制到usr/src(视喜好而定，视具体情况而定)1cp pmfs /us">
+<meta name="description" content="注意1.不能使用LVM（可以使用）2.虚拟机host 16.04上面出现问题，建议不要使用pmfs github首页1https://github.com/linux-pmfs/pmfs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pmfs">
 <meta property="og:url" content="http://yoursite.com/2016/07/16/pmfs/index.html">
 <meta property="og:site_name" content="MIANBAO blog">
-<meta property="og:description" content="注意1.不能使用LVM（可以使用）2.虚拟机host 16.04上面出现问题，建议不要使用pmfs github首页1https://github.com/linux-pmfs/pmfs
-基本教程先把pmfs从项目中git下来1git clone https://github.com/linux-pmfs/pmfs.git
-复制到usr/src(视喜好而定，视具体情况而定)1cp pmfs /us">
+<meta property="og:description" content="注意1.不能使用LVM（可以使用）2.虚拟机host 16.04上面出现问题，建议不要使用pmfs github首页1https://github.com/linux-pmfs/pmfs">
 <meta property="og:image" content="http://oaxz3kiyx.bkt.clouddn.com/2016-07-26%2000-16-00%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png">
-<meta property="og:updated_time" content="2016-09-06T17:28:26.600Z">
+<meta property="og:updated_time" content="2016-09-26T15:43:40.054Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pmfs">
-<meta name="twitter:description" content="注意1.不能使用LVM（可以使用）2.虚拟机host 16.04上面出现问题，建议不要使用pmfs github首页1https://github.com/linux-pmfs/pmfs
-基本教程先把pmfs从项目中git下来1git clone https://github.com/linux-pmfs/pmfs.git
-复制到usr/src(视喜好而定，视具体情况而定)1cp pmfs /us">
+<meta name="twitter:description" content="注意1.不能使用LVM（可以使用）2.虚拟机host 16.04上面出现问题，建议不要使用pmfs github首页1https://github.com/linux-pmfs/pmfs">
 <meta name="twitter:image" content="http://oaxz3kiyx.bkt.clouddn.com/2016-07-26%2000-16-00%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png">
 
 
@@ -290,6 +284,7 @@
 
       
         <p><strong>注意</strong><br><del>1.不能使用LVM</del>（可以使用）<br><del>2.虚拟机host 16.04上面出现问题，建议不要使用</del><br>pmfs github首页<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/linux-pmfs/pmfs</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <h2 id="基本教程"><a href="#基本教程" class="headerlink" title="基本教程"></a>基本教程</h2><h3 id="先把pmfs从项目中git下来"><a href="#先把pmfs从项目中git下来" class="headerlink" title="先把pmfs从项目中git下来"></a>先把pmfs从项目中git下来</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/linux-pmfs/pmfs.git</span><br></pre></td></tr></table></figure>
 <h3 id="复制到usr-src-视喜好而定，视具体情况而定"><a href="#复制到usr-src-视喜好而定，视具体情况而定" class="headerlink" title="复制到usr/src(视喜好而定，视具体情况而定)"></a>复制到usr/src(视喜好而定，视具体情况而定)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp pmfs /usr/src</span><br></pre></td></tr></table></figure>
 <h3 id="切换为root权限，或者全程使用sudo"><a href="#切换为root权限，或者全程使用sudo" class="headerlink" title="切换为root权限，或者全程使用sudo"></a>切换为root权限，或者全程使用sudo</h3><h3 id="找到pmfs并cd到此目录下，然后make-menuconfig（配置内核），这一步需要依赖"><a href="#找到pmfs并cd到此目录下，然后make-menuconfig（配置内核），这一步需要依赖" class="headerlink" title="找到pmfs并cd到此目录下，然后make menuconfig（配置内核），这一步需要依赖"></a>找到pmfs并cd到此目录下，然后make menuconfig（配置内核），这一步需要依赖</h3><p>在Ubuntu 下 以来可以由指令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># apt-get install libncurses5-dev</span></span><br></pre></td></tr></table></figure></p>
